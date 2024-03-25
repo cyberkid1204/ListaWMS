@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise.contrib.fastapi import register_tortoise
 
-app = FastAPI()
+app = FastAPI(title="ListaWMS", version="1.0.0", description="Warehouse Manage System")
 
 # 注册路由
 app.include_router(user_router)
@@ -41,9 +41,9 @@ async def root(request: requests.Request):
     return template.TemplateResponse("index.html", {"request": request})
 
 
-@app.post("/dashboard")
+@app.get("/dashboard")
 async def dash_board(request: requests.Request):
-    return template.TemplateResponse("index.html", {"request": request})
+    return template.TemplateResponse("test.html", {"request": request})
 
 
 if __name__ == "__main__":

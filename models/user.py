@@ -8,7 +8,9 @@ class Users(Model):
     password = fields.CharField(max_length=50, description="Password")
     email = fields.CharField(max_length=50, description="Email")
     phone = fields.CharField(max_length=50, description="Phone", null=True, default="")
-    session_id = fields.CharField(max_length=50, description="Session ID", null=True, default="")
+    session_id = fields.CharField(
+        max_length=50, description="Session ID", null=True, default=""
+    )
     created_at = fields.DatetimeField(auto_now_add=True, description="Created At")
     updated_at = fields.DatetimeField(auto_now=True, description="Updated At")
 
@@ -17,6 +19,7 @@ class Users(Model):
 
     class Meta:
         table = "users"
+        schema = "user"
 
 
 class Roles(Model):
@@ -32,6 +35,7 @@ class Roles(Model):
 
     class Meta:
         table = "roles"
+        schema = "user"
 
 
 class Permissions(Model):
@@ -47,3 +51,4 @@ class Permissions(Model):
 
     class Meta:
         table = "permissions"
+        schema = "user"
